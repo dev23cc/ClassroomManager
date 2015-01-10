@@ -6,10 +6,10 @@
         <title>ClassroomManager</title>
         <link href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.1/flatly/bootstrap.min.css"
               rel="stylesheet">
-        {{ HTML::style( asset('css/main_template.css') ) }}
+        {{ HTML::style(asset('css/main_template.css') ) }}
     </head>
     <body>
-        @include('layouts.navbar')
+        @include('layouts.navbar.navbar')
         <div class="container">
             @yield('content')
             <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>

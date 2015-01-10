@@ -15,6 +15,7 @@ Route::get('/', 'HomeController@showWelcome');
 Route::get('classrooms', 'HomeController@showClassrooms');
 Route::any('home', 'HomeController@showWelcome');
 Route::post('postlogin', array('as' => 'postlogin', 'uses' => 'UserController@postLogin'));
+Route::post('postCreateTeacher', array('as' => 'postCreateTeacher', 'uses' => 'UserController@postCreateTeacher'));
 Route::get('bar', function()
 {
 	return View::make('hello');
@@ -23,7 +24,10 @@ Route::get('login', function()
 {
 	return View::make('users.login');
 });
-
+Route::get('create-teacher', function()
+{
+	return View::make('users.create-teacher');
+});
 Route::get('logout', function()
 {
 	Auth::logout();

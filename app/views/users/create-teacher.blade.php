@@ -1,15 +1,16 @@
 @extends('layouts.main')
 @section('content')
-    {{ HTML::style( asset('css/login.css') ) }}
-    <div class="login_form">
+    {{ HTML::style(asset('css/create-teacher.css') ) }}
+    <div class="create-teacher_form">
         <div class="row centered-form">
-            <div class="col-xs-12 col-sm-8 col-md-5 col-sm-offset-2 col-md-offset-4">
-                <div class="panel panel-default">
+            <div class=" col-md-4 col-lg-6  col-lg-offset-3  text-center ">
+                <div class="panel panel-default ">
                     <div class="panel-heading">
-                        <h3 class="panel-title"><h1>Είσοδος</h1> </h3>
+                        <h3 class="panel-title"><h1>Δημιουργία νέου καθηγητή</h1> </h3>
                     </div>
 
-                    {{ Form::open(array('url' => 'postlogin')) }}
+
+                    {{ Form::open(array('url' => 'postCreateTeacher')) }}
                     @if(Session::has('Error'))
                         <div class="alert alert-danger alert-dismissable">
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
@@ -19,19 +20,26 @@
 
                     <div class="panel-body">
                         <div class="row">
-                            <div class="col-xs-6 col-sm-6 col-md-6">
+                            <div class=".col-sm-9">
                                 <div class="form-group">
                                     {{ Form::text('username', null, array('class'=>'form-control input-sm','placeholder'=>'Username')) }}
                                 </div>
                             </div>
-                            <div class="col-xs-6 col-sm-6 col-md-6">
+                            <div class=".col-sm-9">
+                                <div class="form-group">
+                                    {{ Form::text('Name', null,array('class'=>'form-control input-sm','placeholder'=>'Name')) }}
+                                </div>
                                 <div class="form-group">
                                     {{ Form::password('password', array('class'=>'form-control input-sm','placeholder'=>'Password')) }}
                                 </div>
+                                <div class="form-group">
+                                    {{ Form::password('verify-password', array('class'=>'form-control input-sm','placeholder'=>'Verify Password')) }}
+                                </div>
+
                             </div>
                         </div>
                     </div>
-                    {{ Form::submit('Είσοδος', array('class'=>'btn btn-info btn-block')) }}
+                    {{ Form::submit('Δημιουργία', array('class'=>'btn btn-info btn-block')) }}
 
                     {{ Form::close() }}
 
@@ -39,4 +47,5 @@
             </div>
         </div>
     </div>
+
 @stop

@@ -12,7 +12,6 @@ class UserController extends Controller{
             'username' => Input::get('username'),
             'password' => Input::get('password')
         );
-       // $user = Auth::user();
         if (Auth::attempt($userdata)) {
             echo 'SUCCESS!';
             echo json_encode($userdata);
@@ -22,22 +21,26 @@ class UserController extends Controller{
             echo "user_id: ".$id;
             echo "user Name: ".$name;
             echo " Is current user admin: ".Auth::User()->isAdmin();
-            return Redirect::to('home')->withInput()->with('success', 'Logged in successfully ');
+            return Redirect::to('home')->withInput()->with('success', 'Συνδεθήκατε με επιτυχία ');
         }
         else {
             echo "Error";
             echo json_encode($userdata);
-            return Redirect::to('login')->withInput()->with('Error', 'Username or password invalid !');
-
-
+            return Redirect::to('login')->withInput()->with('Error', 'Λάθος όνομα χρήστη ή κωδικός πρόσβασης !');
         }
-        }
-      //  return Redirect::to('home')->with($user);
-
-
-
-        // return View::make('home')->with($user);
-
-
-    //}
-}
+    }
+    public function postCreateTeacher(){
+        $date = new \DateTime;
+        $userdata = array(
+            'username' => Input::get('username'),
+            'Name' => Input::get('Name'),
+            'isAdmin'=>false,
+            'isTeacher'=>true,
+            'password' => Hash::make(Input::get('password')),
+            'created_at' => $date,
+            'updated_at' => $date
+        );
+        User::create($userdata);
+        return Redirect::to('home')->withInput()->with('success_create-teacher', ' Ο καθηγητής δημιουργήθηκε επιτυχώς ');
+    }
+    }
