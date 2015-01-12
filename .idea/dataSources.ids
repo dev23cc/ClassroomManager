@@ -1791,11 +1791,24 @@
       <column name="max_size" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" def="MA=="/>
       <column name="curr_size" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" def="MA=="/>
     </table>
+    <table name="bookings" schema="" catalog="laravel" type="TABLE">
+      <column name="booking_id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="classroom_id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="teacher_id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="start_time" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="end_time" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="booking_id"/>
+      <foreign-key name="bookings_classroom_id_foreign" columns="classroom_id" ref-table="classrooms" ref-schema="" ref-catalog="laravel" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="bookings_teacher_id_foreign" columns="teacher_id" ref-table="users" ref-schema="" ref-catalog="laravel" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="bookings_classroom_id_foreign" unique="false" columns="classroom_id"/>
+      <index name="bookings_teacher_id_foreign" unique="false" columns="teacher_id"/>
+    </table>
     <table name="classrooms" schema="" catalog="laravel" type="TABLE">
       <column name="id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <column name="isfree" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
       <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="bookings_classroom_id_foreign" table="bookings" schema="" catalog="laravel" columns="classroom_id"/>
     </table>
     <table name="migrations" schema="" catalog="laravel" type="TABLE">
       <column name="migration" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
@@ -1812,6 +1825,7 @@
       <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
       <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
       <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="bookings_teacher_id_foreign" table="bookings" schema="" catalog="laravel" columns="teacher_id"/>
     </table>
     <table name="users" schema="" catalog="lesson08" type="TABLE">
       <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>

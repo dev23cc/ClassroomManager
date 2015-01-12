@@ -9,7 +9,7 @@
     @endif
     @if(Session::has('success_logout'))
         <div class="alert alert-success">
-            <a href="#" class="close" data-dismiss="alert">&times;</a>
+            <a href="#" class="close" >&times;</a>
             <h4><strong>{{ Session::get('success_logout') }}</strong></h4>
         </div>
     @endif
@@ -19,5 +19,11 @@
             <h4><strong>{{ Session::get('success_create-teacher') }}</strong></h4>
         </div>
     @endif
-    <div class="home_title">Αιθουσιολόγιο</div>
+    @if(Session::has('success_create-classroom'))
+        <div class="alert alert-success">
+            <a href="#" class="close" data-dismiss="alert">&times;</a>
+            <h4><strong>{{ Session::get('success_create-classroom') }}</strong></h4>
+        </div>
+    @endif
+    <div class="home_title ">Αιθουσιολόγιο</div>
 @stop

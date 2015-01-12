@@ -7,15 +7,16 @@
  */
 
 class Classroom extends Eloquent {
-    private $classroomId;
-    protected $classroomName;
-
+    protected $fillable = ['name', 'isfree'];
+    //We don't need timestamps for classrooms
+    public $timestamps = false;
+    protected $table = 'classrooms';
     /**
      * @return string
      */
     public function getClassroomName()
     {
-        return $this->classroomName;
+        return $this->name;
     }
 
     /**
@@ -25,9 +26,4 @@ class Classroom extends Eloquent {
     {
         return $this->classroomId;
     }
-    function __construct(){
-        $this->classroomId=0;
-        $this->classroomName="ClassroomName-101";
-    }
-
 }

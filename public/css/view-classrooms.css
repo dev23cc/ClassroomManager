@@ -1,20 +1,22 @@
 @import url(http://fonts.googleapis.com/css?family=Roboto&subset=latin,greek);
+
+.text-center
+{
+    font-family: 'Open Sans', sans-serif;
+    text-align: center !important;
+}
+.table {
+    margin-top: 1px;
+}
+.inv {
+    display: none;
+    visibility: hidden;
+
+}
 body {
     padding-top: 0px;
     background: url(../images/Classroom-Deskss.png) ;
     background-size:   cover;
     background-position: center center;
     opacity: 701.2;
-}
-.home_title {
-    font-family: 'Roboto', sans-serif;
-    color: white;
-    font-size: 8.5em;
-    text-align: center ;
-    margin:auto;
-    opacity: 4.2;
-}
-.alert-box_success {
-    color: blue;
-
 }

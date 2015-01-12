@@ -6,14 +6,23 @@
         <title>ClassroomManager</title>
         <link href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.1/flatly/bootstrap.min.css"
               rel="stylesheet">
+        <link href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/3.1.3/css/bootstrap-datetimepicker.css"
+              rel="stylesheet">
+        <link href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/3.1.3/css/bootstrap-datetimepicker.css"
+              rel="stylesheet">
+
         {{ HTML::style(asset('css/main_template.css') ) }}
     </head>
     <body>
         @include('layouts.navbar.navbar')
         <div class="container">
             @yield('content')
-            <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+            <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
             <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+            <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/3.1.3/js/bootstrap-datetimepicker.min.js"></script>
+            <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"></script>
+
+
         </div>
 
     </body>

@@ -59,6 +59,64 @@ $framework = $app['path.base'].
 
 require $framework.'/Illuminate/Foundation/start.php';
 
+Form::macro('datetime', function($name) {
+    $years = value(function() {
+        $startYear = (int) date('Y');
+        $endYear = $startYear - 5;
+        $years = ['' => 'year'];
+        for($year = $startYear; $year > $endYear; $year--) {
+            $years[ $year ] = $year;
+        };
+        return $years;
+    });
+
+    $months = value(function() {
+        $months = ['' => 'month'];
+        for($month = 1; $month < 13; $month++) {
+            $timestamp = strtotime(date('Y'). '-'.$month.'-13');
+            $months[ $month ] = strftime('%B', $timestamp);
+        }
+        return $months;
+    });
+
+    $days = value(function() {
+        $days = ['' => 'day'];
+        for($day = 1; $day < 32; $day++) {
+            $days[ $day ] = $day;
+        }
+        return $days;
+    });
+
+    $hours = value(function() {
+        $hours = ['' => 'hour'];
+        for($hour = 0; $hour < 24; $hour++) {
+            $hours[ $hour ] = $hour;
+        }
+        return $hours;
+    });
+
+    $minutes = value(function() {
+        $minutes = ['' => 'minute'];
+        for($minute = 0; $minute < 60; $minute++) {
+            $minutes[ $minute ] = $minute;
+        }
+        return $minutes;
+    });
+    $seconds = value(function() {
+        $seconds = ['' => 'second'];
+        for($second = 0; $second < 60; $second++) {
+            $seconds[ $second ] = $second;
+        }
+        return $seconds;
+    });
+    return Form::select($name.'[year]', $years) .
+    Form::select($name.'[month]', $months) .
+    Form::select($name.'[day]', $days) . ' - ' .
+    Form::select($name.'[hour]', $hours) .
+    Form::select($name.'[minute]', $minutes) . ' - ' .
+    Form::select($name.'[second]', $seconds);
+});
+
 /*
 |--------------------------------------------------------------------------
 | Return The Application
